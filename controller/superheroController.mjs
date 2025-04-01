@@ -22,9 +22,9 @@ export async function  obtenerTodosLosSuperheroesController(req, res) {
     try{ 
         const superheroes =await obtenerTodosLosSuperheroes();
        
-        const superheroesFormateados=renderizarListaSuperheroes(superheroes)
-        res.status(200).json(superheroesFormateados);
-
+    
+       
+        res.render('dashboard', { superheroes });
     } catch (error){
         res.status(500).send ({mensaje: 'Error al obtener los superheroes', error:error.mensaje})
     }
@@ -67,7 +67,7 @@ export async function crearSuperheroeController(req, res) {
         const datosSuperheroe = req.body;
 
         // Validación básica
-        if (!datosSuperheroe.nombreSuperheroe || !datosSuperheroe.nombreReal) {
+        if (!datosSuperheroe.nombreSuperHeroe || !datosSuperheroe.nombreReal) {
             return res.status(400).send({ mensaje: "El nombre del superhéroe y el nombre real son obligatorios" });
         }
 
@@ -80,11 +80,11 @@ export async function crearSuperheroeController(req, res) {
 }
 
 export async function actualizarSuperheroePorNombreController(req, res) {
-    const { nombreSuperheroe } = req.params; // Nombre del superhéroe que se quiere actualizar
+    const { nombreSuperHeroe } = req.params; // Nombre del superhéroe que se quiere actualizar
     const nuevosDatos = req.body; // Datos a actualizar desde el cuerpo de la solicitud
 
     try {
-        const superheroeActualizado = await actualizarSuperheroePorNombre(nombreSuperheroe, nuevosDatos);
+        const superheroeActualizado = await actualizarSuperheroePorNombre(nombreSuperHeroe, nuevosDatos);
 
         if (!superheroeActualizado) {
             return res.status(404).send({ mensaje: 'Superhéroe no encontrado' });
@@ -99,10 +99,10 @@ export async function actualizarSuperheroePorNombreController(req, res) {
 
 
 export async function borrarSuperheroePorNombreController(req, res) {
-    const { nombreSuperheroe } = req.params; // Nombre del superhéroe que se quiere borrar
+    const { nombreSuperHeroe } = req.params; // Nombre del superhéroe que se quiere borrar
 
     try {
-        const superheroeBorrado = await borrarSuperheroePorNombre(nombreSuperheroe);
+        const superheroeBorrado = await borrarSuperheroePorNombre(nombreSuperHeroe);
 
         if (!superheroeBorrado) {
             return res.status(404).send({ mensaje: 'Superhéroe no encontrado' });

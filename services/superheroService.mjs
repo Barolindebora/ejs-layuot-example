@@ -21,13 +21,13 @@ export async function crearSuperheroe(datosSuperheroe) {
     return await SuperHeroRepository.insertarSuperheroe(datosSuperheroe);
     }
  
-export async function actualizarSuperheroePorNombre(nombreSuperheroe, nuevosDatos) {
-        return await SuperHeroRepository.actualizarPorNombre(nombreSuperheroe, nuevosDatos);
+export async function actualizarSuperheroePorNombre(nombreSuperHeroe, nuevosDatos) {
+        return await SuperHeroRepository.actualizarPorNombre(nombreSuperHeroe, nuevosDatos);
     }
     
    
-    export async function borrarSuperheroePorNombre(nombreSuperheroe) {
-        return await SuperHeroRepository.borrarPorNombre(nombreSuperheroe);
+    export async function borrarSuperheroePorNombre(nombreSuperHeroe) {
+        return await SuperHeroRepository.borrarPorNombre(nombreSuperHeroe);
     }
     export async function borrarSuperheroePorId(id) {
         return await SuperHeroRepository.borrarPorId(id);

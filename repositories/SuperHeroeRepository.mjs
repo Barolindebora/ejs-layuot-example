@@ -30,16 +30,16 @@ class SuperHeroRepository extends IRepository{
         return await superheroe.save();
     }
    
-    async actualizarPorNombre(nombreSuperheroe, nuevosDatos) {
+    async actualizarPorNombre(nombreSuperHeroe, nuevosDatos) {
         return await SuperHero.findOneAndUpdate(
-                { nombreSuperheroe: nombreSuperheroe },
+                { nombreSuperHeroe: nombreSuperHeroe },
                 nuevosDatos,
                 { new: true } // Devuelve el superhéroe actualizado
             );
         } 
 
-        async borrarPorNombre(nombreSuperheroe) {
-            return await SuperHero.findOneAndDelete({ nombreSuperheroe: nombreSuperheroe });
+        async borrarPorNombre(nombreSuperHeroe) {
+            return await SuperHero.findOneAndDelete({ nombreSuperHeroe: nombreSuperHeroe });
            }
        
            async borrarPorId(id) {

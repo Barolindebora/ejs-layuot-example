@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Superhéroes</title>
+</head>
+<body>
+    <h1>Lista de Superhéroes</h1>
+    <ul>
+        <% superheroes.forEach(superheroe => { %>
+            <li><strong><%= superheroe.nombreSuperHeroe %></strong> <strong><%= superheroe.edad %></strong><strong><%= superheroe.Aliados %></strong></li>
+        <% }) %>
+    </ul>
+</body>
+</html

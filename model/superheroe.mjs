@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 
 const superheroeSchema=new mongoose.Schema({
-    nombreSuperheroe: {type: String, requiered: true},
+    nombreSuperHeroe: {type: String, requiered: true},
     nombreReal: {type: String, requiered: true},
     edad: {type:Number, min:0},
     planetaOrigen: {type: String, default: 'Desconocido'},
