@@ -9,7 +9,7 @@
     <h1>Lista de Superhéroes</h1>
     <ul>
         <% superheroes.forEach(superheroe => { %>
-            <li><strong><%= superheroe.nombreSuperHeroe %></strong> <strong><%= superheroe.edad %></strong><strong><%= superheroe.Aliados %></strong></li>
+            <li><strong><%= superheroe.nombreSuperHeroe %></strong>, <%= superheroe.edad %>, <%= superheroe.aliados %></li>
         <% }) %>
     </ul>
 </body>

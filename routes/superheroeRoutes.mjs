@@ -9,8 +9,8 @@ router.get ('/heroes', obtenerTodosLosSuperheroesController);
 router.get('/heroes/mayores-30', obtenerSuperheroesMayoresDe30Controller);
 router.get('/heroes/:id', obtenerSuperheroePorIdController);
 router.get('/heroes/buscar/:atributo/:valor', obtenerSuperheroesPorAtributoController);
-router.post('/heroes/crear', crearSuperheroeController, manejarErroresDeValidacion, validarSuperheroe); 
-router.put ('/heroes/actualizar/nombre/:nombreSuperHeroe', actualizarSuperheroePorNombreController, manejarErroresDeValidacion, validarSuperheroe);
+router.post('/heroes/crear', validarSuperheroe(),manejarErroresDeValidacion, crearSuperheroeController, ); 
+router.put ('/heroes/actualizar/nombre/:nombreSuperHeroe',  validarSuperheroe,  manejarErroresDeValidacion, actualizarSuperheroePorNombreController );
 router.delete('/heroes/borrar-nombre/:nombreSuperHeroe', borrarSuperheroePorNombreController);
 router.delete('/heroes/borrar-id/:id', borrarSuperheroeIdController);
 
