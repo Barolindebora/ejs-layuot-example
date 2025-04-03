@@ -29,11 +29,8 @@ app.set ('view engine', 'ejs');
 
 //configuracion de rutas
 app.use ('/api', superHeroRoutes);
-app.get('/dashboard',obtenerTodosLosSuperheroesController )
 
-app.get('/greeting',(req, res) =>
-    {const name ="Debora"; 
-    res.render('greeting',{name})});
+
 
 
 //manejo de errores para rutas no encontradas 

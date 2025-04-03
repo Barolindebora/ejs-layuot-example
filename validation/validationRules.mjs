@@ -18,7 +18,7 @@ export const validarSuperheroe = () => [
 
    
     body('poderes')
-        .isArray({ min : 0,  }).withMessage('El poderes debe contener por lo menos un poder.')
+        .isArray({ min : 1,  }).withMessage('El poderes debe contener por lo menos un poder.')
         .custom( (poderes) => {
             for ( const poder of poderes ) {
                 if ( typeof poder !== 'string' || poder.trim().length < 3 || poder.trim().length > 60 ) {
