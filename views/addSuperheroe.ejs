@@ -1,54 +1,96 @@
+<!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Superhéroe</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
+            padding: 30px;
+            color: #333;
+        }
 
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #2980b9;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #216a94;
+        }
+    </style>
 </head>
-
 <body>
     <h1>Agregar Superhéroe</h1>
     <form action="/api/heroes/crear" method="post">
 
         <label for="nombreSuperHeroe">Nombre del Superhéroe:</label>
-        <input type="text"  name="nombreSuperHeroe" required min="3" max="60">
+        <input type="text" name="nombreSuperHeroe" required minlength="3" maxlength="60">
 
-        <br>
         <label for="nombreReal">Nombre Real:</label>
-        <input type="text"name="nombreReal" required>
+        <input type="text" name="nombreReal" required>
 
-        <br>
         <label for="edad">Edad:</label>
         <input type="number" name="edad" required min="0">
 
-        <br>
         <label for="planetaOrigen">Planeta de origen:</label>
-        <input type="text"  name="planetaOrigen" required>
+        <input type="text" name="planetaOrigen" required>
 
-        <br>
         <label for="debilidad">Debilidades (separadas por coma):</label>
         <input type="text" name="debilidad">
 
-
-        <br>
         <label for="poderes">Poderes (separados por coma):</label>
-        <input type="text"  name="poderes" required>
+        <input type="text" name="poderes" required>
 
-        <br>
         <label for="aliados">Aliados (separados por coma):</label>
         <input type="text" name="aliados">
-        <br>
 
         <label for="enemigos">Enemigos (separados por coma):</label>
-        <input type="text"  name="enemigos">
-        <br>
+        <input type="text" name="enemigos">
 
-
-        <br>
         <button type="submit">Agregar</button>
     </form>
-
 </body>
-
 </html>
