@@ -29,16 +29,24 @@ class SuperHeroRepository extends IRepository{
         const superheroe = new SuperHero(nuevoSuperheroe);
         return await superheroe.save();
     }
-   
-    async actualizarPorNombre(nombreSuperHeroe, nuevosDatos) {
-        return await SuperHero.findOneAndUpdate(
-                { nombreSuperHeroe: nombreSuperHeroe },
-                nuevosDatos,
-                { new: true } // Devuelve el superhéroe actualizado
-            );
-        } 
 
-        async borrarPorNombre(nombreSuperHeroe) {
+    async actualizarSuperheroe(id,datosActualizados) {
+        const {nombreSuperHeroe,nombreReal,edad,planetaOrigen,debilidad,poderes,aliados,enemigos,creador} = datosActualizados;
+        const superheroe = await SuperHero.findOneAndUpdate(
+
+        { _id: id }, 
+
+        { $set: { nombreSuperHeroe:nombreSuperHeroe,nombreReal:nombreReal,edad:edad,planetaOrigen:planetaOrigen,debilidad:debilidad,poderes:poderes,aliados:aliados,enemigos:enemigos,creador:creador} },
+
+        { new: true }
+
+      )
+
+      return superheroe; 
+}
+       
+
+    async borrarPorNombre(nombreSuperHeroe) {
             return await SuperHero.findOneAndDelete({ nombreSuperHeroe: nombreSuperHeroe });
            }
        

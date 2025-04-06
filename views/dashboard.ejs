@@ -3,14 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Dashboard de Superhéroes</title>
 </head>
 <body>
     <h1>Lista de Superhéroes</h1>
-    <ul>
-        <% superheroes.forEach(superheroe => { %>
-            <li><strong><%= superheroe.nombreSuperHeroe %></strong>, <%= superheroe.edad %>, <%= superheroe.aliados %></li>
-        <% }) %>
-    </ul>
+    <table border="1" cellspacing="0" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Nombre Real</th>
+                <th>Edad</th>
+                <th>Planeta de Origen</th>
+                <th>Debilidad</th>
+                <th>Poderes</th>
+                <th>Aliados</th>
+                <th>Enemigos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% superheroes.forEach(superheroe => { %>
+                <tr>
+                    <td><%= superheroe.nombreSuperHeroe %></td>
+                    <td><%= superheroe.nombreReal %></td>
+                    <td><%= superheroe.edad %></td>
+                    <td><%= superheroe.planetaOrigen %></td>
+                    <td><%= superheroe.debilidad.join(', ') %></td>
+                    <td><%= superheroe.poderes.join(', ') %></td>
+                    <td><%= superheroe.aliados.join(', ') %></td>
+                    <td><%= superheroe.enemigos.join(', ') %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 </body>
 </html

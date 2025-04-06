@@ -1,32 +1,54 @@
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Superhéroe</title>
-   
+
 </head>
+
 <body>
     <h1>Agregar Superhéroe</h1>
-    <form action="localhost:3000/api/heroes/crear" method="post" >
-       
-        <label for="nombreSuperheroe">Nombre del Superhéroe:</label>
-        <input type="text" id="nombreSuperheroe" name="nombreSuperheroe" required min="3" max="60">
-  
+    <form action="/api/heroes/crear" method="post">
+
+        <label for="nombreSuperHeroe">Nombre del Superhéroe:</label>
+        <input type="text"  name="nombreSuperHeroe" required min="3" max="60">
+
         <br>
         <label for="nombreReal">Nombre Real:</label>
-        <input type="text" id="nombreReal" name="nombreReal" required>
-    
+        <input type="text"name="nombreReal" required>
+
         <br>
         <label for="edad">Edad:</label>
-        <input type="number" id="edad" name="edad" required min="0">
+        <input type="number" name="edad" required min="0">
+
+        <br>
+        <label for="planetaOrigen">Planeta de origen:</label>
+        <input type="text"  name="planetaOrigen" required>
+
+        <br>
+        <label for="debilidad">Debilidades (separadas por coma):</label>
+        <input type="text" name="debilidad">
+
 
         <br>
         <label for="poderes">Poderes (separados por coma):</label>
-        <input type="text" id="poderes" name="poderes" required>
-     
+        <input type="text"  name="poderes" required>
+
+        <br>
+        <label for="aliados">Aliados (separados por coma):</label>
+        <input type="text" name="aliados">
+        <br>
+
+        <label for="enemigos">Enemigos (separados por coma):</label>
+        <input type="text"  name="enemigos">
+        <br>
+
+
         <br>
         <button type="submit">Agregar</button>
     </form>
-   
+
 </body>
+
 </html>

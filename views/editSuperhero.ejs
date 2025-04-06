@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Editar Superhéroe</h1>
+<form action= "http:/localhost:3000/api/heroes/actualizar/nombre/:nombreSuperHeroe_method=PUT" method="post">
+    <input type="hidden" name="_method" value="PUT">
+
+    <label for="nombreSuperHeroe">Nombre del Superhéroe:</label>
+    <input type="text" name="nombreSuperHeroe" required min="3" max="60" value="<%= superheroe.nombreSuperHeroe %>">
+
+    <br>
+    <label for="nombreReal">Nombre Real:</label>
+    <input type="text" name="nombreReal" required value="<%= superheroe.nombreReal %>">
+
+    <br>
+    <label for="edad">Edad:</label>
+    <input type="number" name="edad" required min="0" value="<%= superheroe.edad %>">
+
+    <br>
+    <label for="planetaOrigen">Planeta de origen:</label>
+    <input type="text" name="planetaOrigen" required value="<%= superheroe.planetaOrigen %>">
+
+    <br>
+    <label for="debilidad">Debilidades (separadas por coma):</label>
+    <input type="text" name="debilidad" value="<%= superheroe.debilidad?.join(', ') %>">
+
+    <br>
+    <label for="poderes">Poderes (separados por coma):</label>
+    <input type="text" name="poderes" required value="<%= superheroe.poderes?.join(', ') %>">
+
+    <br>
+    <label for="aliados">Aliados (separados por coma):</label>
+    <input type="text" name="aliados" value="<%= superheroe.aliados?.join(', ') %>">
+
+    <br>
+    <label for="enemigos">Enemigos (separados por coma):</label>
+    <input type="text" name="enemigos" value="<%= superheroe.enemigos?.join(', ') %>">
+
+    <br>
+    <button type="submit">Guardar Cambios</button>
+</form>
+    
+</body>
+</html>
