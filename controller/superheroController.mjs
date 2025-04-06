@@ -93,8 +93,8 @@ export async function actualizarSuperheroeController(req, res) {
     const {id}= req.params;
     const nuevosDatos= req.body;
     const superheroeActualizado = await actualizarSuperheroe(id,nuevosDatos);
-   // res.redirect('http://localhost:3000/api/heroes');
-   res.status(200).json(superheroeActualizado);
+   res.redirect('http://localhost:3000/api/heroes');
+ 
     } catch (error) {
         res.status(500).send({mensaje:'Superheroe con ID incorrecto o inexistente'}); 
     }
@@ -137,4 +137,18 @@ export async function borrarSuperheroeIdController(req, res) {
     }
 
     
+}
+
+export const modificarSuperheroeFormularioController = async ( req, res ) => {
+    try {
+        const { id } = req.params;
+        const superheroeaEditar = await obtenerSuperheroesPorId( id );
+        
+        res.render('editSuperhero', { superheroeaEditar });
+    } catch (error) {
+        res.status(500).send({
+            mensaje: `Error al cargar formulario`,
+            error: error.mensaje
+        });
+    }
 }

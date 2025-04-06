@@ -32,6 +32,11 @@
                     <td><%= superheroe.poderes.join(', ') %></td>
                     <td><%= superheroe.aliados.join(', ') %></td>
                     <td><%= superheroe.enemigos.join(', ') %></td>
+                    <td>
+                        <a href="/api/formulario/modificar-heroe/<%= superheroe._id %>">
+                            <button>Editar</button>
+                        </a>
+                    </td>
                 </tr>
             <% }) %>
         </tbody>

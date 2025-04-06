@@ -1,10 +1,9 @@
 import express from 'express';
 import {connectDB} from './config/dbconfig.mjs';
 import superHeroRoutes from './routes/superheroeRoutes.mjs';
-import { obtenerTodosLosSuperheroesController } from './controller/superheroController.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
+import methodOverride from 'method-override';
 
 const __filename = fileURLToPath(import.meta.url); // Get the resolved path to the file
 const __dirname = path.dirname(__filename); 
@@ -15,9 +14,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+
+app.use(methodOverride('_method'));
 //middleware para parsear JSON
 app.set('views', path.join(__dirname, 'views')); // ajustar ruta
-
+app.set('view engine', 'ejs');
 
 app.use(express.static('views'));
 //conexion a MongoDB
