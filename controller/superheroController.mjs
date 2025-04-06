@@ -93,7 +93,7 @@ export async function actualizarSuperheroeController(req, res) {
     const {id}= req.params;
     const nuevosDatos= req.body;
     const superheroeActualizado = await actualizarSuperheroe(id,nuevosDatos);
-   res.redirect('http://localhost:3000/api/heroes');
+   res.redirect('http://localhost:3000/api/dashboard');
  
     } catch (error) {
         res.status(500).send({mensaje:'Superheroe con ID incorrecto o inexistente'}); 
@@ -131,7 +131,7 @@ export async function borrarSuperheroeIdController(req, res) {
         }
 
         // Devolver el superhéroe borrado
-        res.status(200).json(superheroeBorrado);
+        res.redirect ('http://localhost:3000/api/heroes')
     } catch (error) {
         res.status(500).send({ mensaje: 'Error al borrar el superhéroe', error: error.message });
     }

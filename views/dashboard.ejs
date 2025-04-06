@@ -36,6 +36,10 @@
                         <a href="/api/formulario/modificar-heroe/<%= superheroe._id %>">
                             <button>Editar</button>
                         </a>
+                        <form action="/api/heroes/borrar-id/<%= superheroe._id %>?_method=DELETE" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas borrar el superhéroe <%= superheroe.nombreSuperHeroe %>?');" style="display:inline;">
+                            <button type="submit">Borrar</button>
+                        </form>
+                        
                     </td>
                 </tr>
             <% }) %>
