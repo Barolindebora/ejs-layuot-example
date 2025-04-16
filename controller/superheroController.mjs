@@ -22,7 +22,7 @@ export async function  obtenerSuperheroePorIdController(req, res) {
 export async function  obtenerTodosLosSuperheroesController(req, res) {
     try{ 
         const superheroes =await obtenerTodosLosSuperheroes();
-       res.render('dashboard', { superheroes });
+       res.render('dashboard', { title: "Superheroes", superheroes });
     } catch (error){
         res.status(500).send ({mensaje: 'Error al obtener los superheroes', error:error.messaje})
     }
@@ -152,3 +152,25 @@ export const modificarSuperheroeFormularioController = async ( req, res ) => {
         });
     }
 }
+
+//controlador para mostrar el index
+export const mostrarIndexController = (req, res) => {
+    try {
+        res.render('index', { // Renderiza la vista index.ejs
+            
+            title: 'Página de Inicio',
+        navbarLinks: [
+                { text: 'Inicio', href: '/' , icon:'icons/home.svg'},
+                { text: 'Crear Superhéroe', href: '/api/formulario/crear' , icon:'icons/icons8-hero-png'},
+                { text: 'Ver Superhéroes', href: '/api/heroes' , icon:'icons/icons8-superhero-64.png'}
+              
+            ]
+        });
+
+    } catch (error) {
+        res.status(500).send({
+            mensaje: 'Error al cargar la vista del índice',
+            error: error.message
+        });
+    }
+};
