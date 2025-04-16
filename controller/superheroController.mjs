@@ -63,23 +63,14 @@ export async function  obtenerSuperheroesMayoresDe30Controller(req, res) {
 
 export async function crearSuperheroeController(req, res) {
     try {
-        // Convertir campos separados por coma en arrays
-        const datosSuperheroe = {
-            ...req.body,
-            poderes: req.body.poderes?.split(',').map(p => p.trim()).filter(p => p !== ''),
-            debilidad: req.body.debilidad?.split(',').map(d => d.trim()).filter(d => d !== ''),
-            aliados: req.body.aliados?.split(',').map(a => a.trim()).filter(a => a !== ''),
-            enemigos: req.body.enemigos?.split(',').map(e => e.trim()).filter(e => e !== ''),
-            creador: req.body.creador?.split(',').map(c => c.trim()).filter(c => c !== '')
-        };
-
-        // Validación básica
+       
+    // Validación básica
         if (!datosSuperheroe.nombreSuperHeroe || !datosSuperheroe.nombreReal) {
             return res.status(400).send({ mensaje: "El nombre del superhéroe y el nombre real son obligatorios" });
         }
 
         const nuevoSuperheroe = await crearSuperheroe(datosSuperheroe);
-       res.redirect ('/api/dashboard');
+       res.redirect ('/');
       
     } catch (error) {
         res.status(500).send({ mensaje: "Error al crear el superhéroe", error: error.message });
@@ -93,7 +84,7 @@ export async function actualizarSuperheroeController(req, res) {
     const {id}= req.params;
     const nuevosDatos= req.body;
     const superheroeActualizado = await actualizarSuperheroe(id,nuevosDatos);
-   res.redirect('http://localhost:3000/api/dashboard');
+   res.redirect('/');
  
     } catch (error) {
         res.status(500).send({mensaje:'Superheroe con ID incorrecto o inexistente'}); 
@@ -131,7 +122,7 @@ export async function borrarSuperheroeIdController(req, res) {
         }
 
         // Devolver el superhéroe borrado
-        res.redirect ('http://localhost:3000/api/heroes')
+        res.redirect ('/')
     } catch (error) {
         res.status(500).send({ mensaje: 'Error al borrar el superhéroe', error: error.message });
     }
@@ -159,12 +150,7 @@ export const mostrarIndexController = (req, res) => {
         res.render('index', { // Renderiza la vista index.ejs
             
             title: 'Página de Inicio',
-        navbarLinks: [
-                { text: 'Inicio', href: '/' , icon:'icons/home.svg'},
-                { text: 'Crear Superhéroe', href: '/api/formulario/crear' , icon:'icons/icons8-hero-png'},
-                { text: 'Ver Superhéroes', href: '/api/heroes' , icon:'icons/icons8-superhero-64.png'}
-              
-            ]
+      
         });
 
     } catch (error) {
