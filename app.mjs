@@ -12,6 +12,10 @@ const app =express();
 const PORT=process.env.PORT||3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+    res.locals.title = 'Superhéroes App'; // título por defecto
+    next();
+  });
 
 //configurar EJS como motor de plantillas
 app.set('view engine', 'ejs');

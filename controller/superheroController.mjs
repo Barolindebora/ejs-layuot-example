@@ -64,13 +64,17 @@ export async function  obtenerSuperheroesMayoresDe30Controller(req, res) {
 export async function crearSuperheroeController(req, res) {
     try {
        
-    // Validación básica
+        const datosSuperheroe = req.body;
+            
+        
+
+        // Validación básica
         if (!datosSuperheroe.nombreSuperHeroe || !datosSuperheroe.nombreReal) {
             return res.status(400).send({ mensaje: "El nombre del superhéroe y el nombre real son obligatorios" });
         }
 
         const nuevoSuperheroe = await crearSuperheroe(datosSuperheroe);
-       res.redirect ('/');
+       res.redirect ('/api/dashboard');
       
     } catch (error) {
         res.status(500).send({ mensaje: "Error al crear el superhéroe", error: error.message });
@@ -84,7 +88,7 @@ export async function actualizarSuperheroeController(req, res) {
     const {id}= req.params;
     const nuevosDatos= req.body;
     const superheroeActualizado = await actualizarSuperheroe(id,nuevosDatos);
-   res.redirect('/');
+   res.redirect('/api/dashboard');
  
     } catch (error) {
         res.status(500).send({mensaje:'Superheroe con ID incorrecto o inexistente'}); 
@@ -122,7 +126,7 @@ export async function borrarSuperheroeIdController(req, res) {
         }
 
         // Devolver el superhéroe borrado
-        res.redirect ('/')
+        res.redirect ('/api/dashboard')
     } catch (error) {
         res.status(500).send({ mensaje: 'Error al borrar el superhéroe', error: error.message });
     }
@@ -135,11 +139,12 @@ export const modificarSuperheroeFormularioController = async ( req, res ) => {
         const { id } = req.params;
         const superheroeaEditar = await obtenerSuperheroesPorId( id );
         
-        res.render('editSuperhero', { superheroeaEditar });
+        res.render('editSuperhero', {title: "Editar Superheroe", superheroeaEditar });
+        
     } catch (error) {
         res.status(500).send({
             mensaje: `Error al cargar formulario`,
-            error: error.mensaje
+            error: error.message
         });
     }
 }
