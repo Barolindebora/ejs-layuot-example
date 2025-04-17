@@ -38,7 +38,27 @@ body {
 .navbar ul li img {
     width: 20px;
 }
-
+.inicio{
+    background-image: url('/images/superhero-logos-958x575.png'); /* Ruta relativa o absoluta */
+  
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 👈 Esto pone el contenido arriba */
+    align-items: center;
+  
+    padding-top: 50px; /* Subís el texto con espacio arriba */
+    color: white;
+    text-align: center;
+}
+.container{
+     
+        max-width: 800px;
+      
+}
 footer {
     text-align: center;
     padding: 10px;
@@ -48,3 +68,12 @@ footer {
     bottom: 0;
     width: 100%;
 }
+h1 {
+    color: white;
+    font-size: 3rem;
+    text-shadow:
+      -1px -1px 0 black,  
+       1px -1px 0 black,
+      -1px  1px 0 black,
+       1px  1px 0 black;
+  }
