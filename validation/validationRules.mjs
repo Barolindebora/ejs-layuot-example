@@ -25,10 +25,19 @@ export function validarSuperheroe() {
       .notEmpty().withMessage("Campo 'poderes' obligatorio.")
       .custom(value => {
         if (!value || typeof value !== 'string') throw new Error("Poderes inválidos.");
-        const poderesArray = value.split(',').map(p => p.trim()).filter(p => p.length >= 3 && p.length <= 60);
+        const poderesArray = value.split(',').map(p => p.trim());
         if (poderesArray.length === 0) throw new Error("El campo poderes debe contener al menos un poder válido (entre 3 y 60 caracteres).");
+        const poderInvalido = poderesArray.find(p => p.length < 3 || p.length > 60);
+    if (poderInvalido) {
+      throw new Error(`El poder "${poderInvalido}" no cumple con la longitud requerida (3-60 caracteres).`);
+    }
+
         return true;
       }),
+      /*for (const poder of poderesArray) {
+      if (poder.length < 3 || poder.length > 60) {
+        throw new Error(`El poder "${poder}" debe tener entre 3 y 60 caracteres.`);
+      }*/ 
 
     body('debilidad')
       .optional()
